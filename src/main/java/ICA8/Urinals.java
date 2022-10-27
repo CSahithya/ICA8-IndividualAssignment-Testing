@@ -10,7 +10,18 @@ public class Urinals {
     private int count;
 
     public static void main(String[] args) {
-
+        Urinals u = new Urinals();
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter a Urinal String to get the Count");
+        String input = sc.nextLine();
+        u.countUrinals(input);
+        if(u.count==-1){
+            System.out.println("Check the input String. Result: "+ -1);
+        }
+        else{
+            System.out.println("Great! The number of free urinals are: "+u.count);
+        }
+        sc.close();
     }
 
     public void getString(){
