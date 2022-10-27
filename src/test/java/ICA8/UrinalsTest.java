@@ -50,4 +50,9 @@ public class UrinalsTest {
     void countForWrongString(){
         assertEquals(-1,urinals.countUrinals(urinalArray[4]));
     }
+
+    @Test
+    void countZeroIfNoUrinal(){
+        assertEquals(0, urinals.countUrinals("1010101"));
+    }
 }

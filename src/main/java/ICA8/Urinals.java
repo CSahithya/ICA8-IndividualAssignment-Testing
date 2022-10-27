@@ -7,13 +7,16 @@ import java.util.Scanner;
 public class Urinals {
     private File datFile = new File("src\\main\\resources\\urinals.dat");
     private String urinalArray[];
-    private int Count;
+    private int count;
+
     public static void main(String[] args) {
 
     }
+
     public void getString(){
 
     }
+
     public void openFile(File filename){
         StringBuilder sb = new StringBuilder();
         try {
@@ -26,12 +29,29 @@ public class Urinals {
         }
         urinalArray = sb.toString().split("\n ");
     }
+
     public int countUrinals(String check){
         if(!goodString(check)){
             return -1;
         }
+        int flag=0, previousVal=0;
+        count = 0;
+        for(int i=0;i<check.length();i++){
+            if(previousVal==0 && check.charAt(i)=='0'){
+                if(flag==1){
+                    count++;
+                    flag = 0;
+                }
+                else{
+                    flag = 1;
+                }
+            }
+            previousVal = Character.valueOf(check.charAt(i));
+        }
+        if(count!=0) return count;
         return 0;
     }
+
     public boolean goodString(String str){
         //length check
         if(str.length()>20 || str.length()<1){
