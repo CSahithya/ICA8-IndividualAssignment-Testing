@@ -44,15 +44,25 @@ public class UrinalsTest {
     @Test
     void checkForGoodString(){
         assertTrue(urinals.goodString("10010010101000"));
+        //for the correct string
     }
 
     @Test
     void countForWrongString(){
         assertEquals(-1,urinals.countUrinals(urinalArray[4]));
+        //wrong string count
     }
 
     @Test
     void countZeroIfNoUrinal(){
-        assertEquals(0, urinals.countUrinals("1010101"));
+        assertEquals(0, urinals.countUrinals(urinalArray[3]));
+        //correct string when no urinals
     }
+
+    @Test
+    void countUrinalsWhenNoOccupancy(){
+        assertEquals(3, urinals.countUrinals(urinalArray[2]));
+        //string of zeroes
+    }
+
 }

@@ -46,7 +46,10 @@ public class Urinals {
                     flag = 1;
                 }
             }
-            previousVal = Character.valueOf(check.charAt(i));
+            previousVal = Integer.parseInt(check.charAt(i)+"");
+        }
+        if(previousVal == 0 && flag==1){
+            count++;
         }
         if(count!=0) return count;
         return 0;
