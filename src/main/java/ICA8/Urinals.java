@@ -35,6 +35,10 @@ public class Urinals {
         if(str.length()>20 || str.length()<1){
             return false;
         }
+        //the given string shouldn't violate the unwritten rule
+        if(str.contains("11")){
+            return false;
+        }
         //check string
         if(str.matches("[01]+")){
             return true;

@@ -19,6 +19,7 @@ public class UrinalsTest {
     @Test
     void checkIfGoodString(){
         assertFalse(urinals.goodString("Sahithya"));
+        //String should be in a binary format
     }
 
     @Test
@@ -29,10 +30,14 @@ public class UrinalsTest {
 
     @Test
     void checkStringLength(){
-        assertFalse(urinals.goodString("1010101101001010000010000100"));
+        assertFalse(urinals.goodString("101010101001010000010000100"));
         //length<=20
     }
 
-
+    @Test
+    void checkWrongString(){
+        assertFalse(urinals.goodString("101100101010"));
+        //given string shouldn't already violate the unwritten male urinal rule
+    }
 
 }
