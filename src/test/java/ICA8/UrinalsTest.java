@@ -8,22 +8,29 @@ import java.io.File;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class UrinalsTest {
-    static Urinals maleUrinals = new Urinals();
+    static Urinals urinals = new Urinals();
     public static final File DATAFILE = new File("");
 
     @BeforeAll
     static void setUpTest(){
-        //maleUrinals.openFile(DATAFILE);
+        //urinals.openFile(DATAFILE);
     }
 
     @Test
     void checkIfGoodString(){
-        assertFalse(maleUrinals.goodString("Sahithya"));
+        assertFalse(urinals.goodString("Sahithya"));
     }
 
     @Test
     void checkStringNotNull(){
-        assertFalse(maleUrinals.goodString(""));
+        assertFalse(urinals.goodString(""));
+        //length>=1
+    }
+
+    @Test
+    void checkStringLength(){
+        assertFalse(urinals.goodString("1010101101001010000010000100"));
+        //length<=20
     }
 
 
