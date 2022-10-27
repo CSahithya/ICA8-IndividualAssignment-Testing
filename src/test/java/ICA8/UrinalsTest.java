@@ -40,4 +40,9 @@ public class UrinalsTest {
         //given string shouldn't already violate the unwritten male urinal rule
     }
 
+    @Test
+    void checkForGoodString(){
+        assertTrue(urinals.goodString("10010010101000"));
+    }
+
 }
