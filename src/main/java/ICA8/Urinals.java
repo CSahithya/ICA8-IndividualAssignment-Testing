@@ -26,8 +26,10 @@ public class Urinals {
         }
         urinalArray = sb.toString().split("\n ");
     }
-    public int countUrinals(){
-
+    public int countUrinals(String check){
+        if(!goodString(check)){
+            return -1;
+        }
         return 0;
     }
     public boolean goodString(String str){

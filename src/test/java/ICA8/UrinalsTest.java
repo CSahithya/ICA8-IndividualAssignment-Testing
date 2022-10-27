@@ -10,6 +10,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class UrinalsTest {
     static Urinals urinals = new Urinals();
     public static final File DATAFILE = new File("");
+    String[] urinalArray = {"10010000", "10001", "00000", "010101", "1100101"};
 
     @BeforeAll
     static void setUpTest(){
@@ -45,4 +46,8 @@ public class UrinalsTest {
         assertTrue(urinals.goodString("10010010101000"));
     }
 
+    @Test
+    void countForWrongString(){
+        assertEquals(-1,urinals.countUrinals(urinalArray[4]));
+    }
 }
