@@ -2,12 +2,15 @@ package ICA8;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.lang.reflect.Array;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Urinals {
     private File datFile = new File("src\\main\\resources\\urinals.dat");
     private String urinalArray[];
     private String fileInput;
+    private String outputString;
     private int count;
 
     public static void main(String[] args) {
@@ -25,6 +28,15 @@ public class Urinals {
         sc.close();
     }
 
+    public String getOutputString(){
+        outputString="";
+        urinalArray = fileInput.split("\n");
+        for(int i=0;i<urinalArray.length;i++){
+            outputString+= ""+this.countUrinals(urinalArray[i])+"\n";
+        }
+        return outputString;
+    }
+
     public String getInputString(){
         return this.fileInput;
     }
@@ -36,10 +48,10 @@ public class Urinals {
             while(sc.hasNext()){
                 fileInput+=sc.nextLine()+"\n";
             }
+            sc.close();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-        urinalArray = fileInput.split("\n ");
     }
 
     public int countUrinals(String check){

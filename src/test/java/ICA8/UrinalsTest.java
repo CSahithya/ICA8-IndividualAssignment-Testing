@@ -83,4 +83,11 @@ public class UrinalsTest {
         assertNotEquals("",urinals.getInputString());
     }
 
+    @Test
+    void checkOutputStringNotNull(){
+        assertNotEquals("",urinals.getOutputString());
+    }
+
+
+
 }
