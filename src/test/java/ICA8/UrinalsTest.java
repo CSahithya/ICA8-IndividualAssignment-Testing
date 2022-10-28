@@ -123,7 +123,7 @@ public class UrinalsTest {
 
     @Test
     void writeToOutputFileDuplicate(){
-        File f = new File("src\\main\\resources\\rest.txt");
+        File f = new File("src\\main\\resources\\rule.txt");
         try {
             f.createNewFile();
         } catch (IOException e) {
