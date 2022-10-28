@@ -2,6 +2,8 @@ package ICA8;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.Scanner;
@@ -10,6 +12,7 @@ public class Urinals {
     private File datFile = new File("src\\main\\resources\\urinals.dat");
     private String urinalArray[];
     private String inputString;
+    private File outputFile = new File("src\\main\\resources\\rest.txt");
     private String outputString;
     private int count;
     private int errorType;
@@ -17,28 +20,70 @@ public class Urinals {
     public static void main(String[] args) {
         Urinals u = new Urinals();
         Scanner sc = new Scanner(System.in);
-        System.out.println("Enter a Urinal String to get the Count");
-        String input = sc.nextLine();
-        u.countUrinals(input);
-        if(u.count==-1){
-            System.out.println("Check the input String. Result: "+ -1);
+        System.out.println("Please enter:\n 1. Keyboard Input\n 2. File Input");
+        int choice = sc.nextInt();
+        sc.nextLine();
+        if(choice == 1) {
+            System.out.println("Enter a Urinal String to get the Count");
+            String input = sc.nextLine();
+            u.countUrinals(input);
+            if (u.count == -1) {
+                System.out.println("Check the input String. Result: " + -1);
+            } else {
+                System.out.println("Great! The number of free urinals are: " + u.count);
+            }
+        }
+        else if(choice == 2){
+            System.out.println("Working on the Urinals.dat file");
+            u.openFile(u.datFile);
+            System.out.println("Written to "+u.writeToOutputFile().getName());
+            System.out.println("The output has been written to the latest rest.txt");
+        }
+            sc.close();
+    }
+
+    public File writeToOutputFile(){
+        if(!outputFile.exists()){
+            try {
+                outputFile.createNewFile();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
         else{
-            System.out.println("Great! The number of free urinals are: "+u.count);
+            for(int i=1;i<10;i++){
+                String filepath = "src\\main\\resources\\rest"+i+".txt";
+                outputFile = new File(filepath);
+                if(!outputFile.exists()){
+                    try {
+                        outputFile.createNewFile();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    break;
+                }
+            }
+            if(!outputFile.exists()){
+                System.out.println("Too many rest files to create new!");
+            }
         }
-        sc.close();
-    }
-
-    public void writeToOutputFile(){
-        //File
-    }
-
-    public String getOutputString(){
         outputString="";
         urinalArray = inputString.split("\n");
         for(int i=0;i<urinalArray.length;i++){
             outputString+= ""+this.countUrinals(urinalArray[i])+"\n";
         }
+        try {
+            FileWriter fw = new FileWriter(outputFile);
+            fw.write(outputString);
+            fw.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return outputFile;
+    }
+
+    public String getOutputString(){
         return outputString;
     }
 

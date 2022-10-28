@@ -4,7 +4,6 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -109,8 +108,17 @@ public class UrinalsTest {
 
     @Test
     void checkCorrectLengthInputAndOutput(){
+        File f = urinals.writeToOutputFile();
         assertEquals(urinals.getInputString().split("\n").length,
                 urinals.getOutputString().split("\n").length);
+        f.delete();
+    }
+
+    @Test
+    void writeToOutputFile(){
+        File f = urinals.writeToOutputFile();
+        assertNotNull(f);
+        f.delete();
     }
 
 }
