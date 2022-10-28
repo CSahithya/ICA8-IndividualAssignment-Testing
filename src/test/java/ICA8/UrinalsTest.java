@@ -88,6 +88,10 @@ public class UrinalsTest {
         assertNotEquals("",urinals.getOutputString());
     }
 
-
+    @Test
+    void checkCorrectLengthInputAndOutput(){
+        assertEquals(urinals.getInputString().split("\n").length,
+                urinals.getOutputString().split("\n").length);
+    }
 
 }

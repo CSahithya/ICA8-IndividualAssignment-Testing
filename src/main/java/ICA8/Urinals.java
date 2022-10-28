@@ -9,7 +9,7 @@ import java.util.Scanner;
 public class Urinals {
     private File datFile = new File("src\\main\\resources\\urinals.dat");
     private String urinalArray[];
-    private String fileInput;
+    private String inputString;
     private String outputString;
     private int count;
 
@@ -30,7 +30,7 @@ public class Urinals {
 
     public String getOutputString(){
         outputString="";
-        urinalArray = fileInput.split("\n");
+        urinalArray = inputString.split("\n");
         for(int i=0;i<urinalArray.length;i++){
             outputString+= ""+this.countUrinals(urinalArray[i])+"\n";
         }
@@ -38,15 +38,15 @@ public class Urinals {
     }
 
     public String getInputString(){
-        return this.fileInput;
+        return this.inputString;
     }
 
     public void openFile(File filename){
-        fileInput="";
+        inputString="";
         try {
             Scanner sc = new Scanner(filename);
             while(sc.hasNext()){
-                fileInput+=sc.nextLine()+"\n";
+                inputString+=sc.nextLine()+"\n";
             }
             sc.close();
         } catch (FileNotFoundException e) {
