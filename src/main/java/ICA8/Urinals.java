@@ -134,7 +134,7 @@ public class Urinals {
         if(previousVal == 0 && flag==1){
             count++;
         }
-        if(!check.contains("1")){
+        else if(!check.contains("1")){
             count++;
         }
         if(count!=0) return count;
