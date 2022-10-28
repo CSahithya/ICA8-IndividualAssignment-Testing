@@ -1,5 +1,11 @@
 # ICA8-IndividualAssignment-Testing
 
+### Details
+1. Test File has different unique test cases
+2. Main has the countUrinal where hte count is calculated
+3. Change the file name in the Urinals.java file to test for other input
+4. Run main to get the keyboard or file input
+
 ### Your task: 
 You need to write a function that returns the maximum of free urinals as an integer according to the unwritten rule. 
 

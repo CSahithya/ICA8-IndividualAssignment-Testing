@@ -119,15 +119,22 @@ public class Urinals {
             if(previousVal==0 && check.charAt(i)=='0'){
                 if(flag==1){
                     count++;
+                    previousVal = 1;
                     flag = 0;
                 }
                 else{
                     flag = 1;
+                    previousVal = Integer.parseInt(check.charAt(i) + "");
                 }
             }
-            previousVal = Integer.parseInt(check.charAt(i)+"");
+            else {
+                previousVal = Integer.parseInt(check.charAt(i) + "");
+            }
         }
         if(previousVal == 0 && flag==1){
+            count++;
+        }
+        if(!check.contains("1")){
             count++;
         }
         if(count!=0) return count;
