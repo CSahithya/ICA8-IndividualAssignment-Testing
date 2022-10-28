@@ -121,4 +121,17 @@ public class UrinalsTest {
         f.delete();
     }
 
+    @Test
+    void writeToOutputFileDuplicate(){
+        File f = new File("src\\main\\resources\\rest.txt");
+        try {
+            f.createNewFile();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        File secondFile = urinals.writeToOutputFile();
+        assertEquals("rest1.txt", secondFile.getName());
+        f.delete();
+        secondFile.delete();
+    }
 }
