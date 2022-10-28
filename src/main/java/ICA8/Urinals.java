@@ -12,6 +12,7 @@ public class Urinals {
     private String inputString;
     private String outputString;
     private int count;
+    private int errorType;
 
     public static void main(String[] args) {
         Urinals u = new Urinals();
@@ -28,6 +29,10 @@ public class Urinals {
         sc.close();
     }
 
+    public void writeToOutputFile(){
+        //File
+    }
+
     public String getOutputString(){
         outputString="";
         urinalArray = inputString.split("\n");
@@ -41,7 +46,7 @@ public class Urinals {
         return this.inputString;
     }
 
-    public void openFile(File filename){
+    public int openFile(File filename){
         inputString="";
         try {
             Scanner sc = new Scanner(filename);
@@ -51,7 +56,9 @@ public class Urinals {
             sc.close();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
+            return -1;
         }
+        return 0;
     }
 
     public int countUrinals(String check){
@@ -82,17 +89,21 @@ public class Urinals {
     public boolean goodString(String str){
         //length check
         if(str.length()>20 || str.length()<1){
+            errorType = 2;
             return false;
         }
         //the given string shouldn't violate the unwritten rule
         if(str.contains("11")){
+            errorType = 1;
             return false;
         }
         //check string
         if(str.matches("[01]+")){
+            errorType = 0;
             return true;
         }
         //any other case
+        errorType = 3;
         return false;
     }
 }

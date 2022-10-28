@@ -79,6 +79,12 @@ public class UrinalsTest {
     }
 
     @Test
+    void checkIfNoFileExists(){
+        assertEquals(-1,urinals.openFile(new File(" ")));
+
+    }
+
+    @Test
     void readFileToString(){
         assertNotEquals("",urinals.getInputString());
     }
