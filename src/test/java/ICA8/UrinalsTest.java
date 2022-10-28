@@ -4,17 +4,18 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 public class UrinalsTest {
     static Urinals urinals = new Urinals();
-    public static final File DATAFILE = new File("");
+    public static final File inputFile = new File("src\\main\\resources\\urinals.dat");
     String[] urinalArray = {"10010000", "10001", "00000", "010101", "1100101"};
 
     @BeforeAll
     static void setUpTest(){
-        //urinals.openFile(DATAFILE);
+        urinals.openFile(inputFile);
     }
 
     @Test
@@ -63,6 +64,23 @@ public class UrinalsTest {
     void countUrinalsWhenNoOccupancy(){
         assertEquals(3, urinals.countUrinals(urinalArray[2]));
         //string of zeroes
+    }
+
+    @Test
+    void countWhenOneUrinalPresent(){
+        assertEquals(1,urinals.countUrinals(urinalArray[1]));
+        //only one urinal present
+    }
+
+    @Test
+    void countCorrectNumberOfUrinals(){
+        assertEquals(2,urinals.countUrinals(urinalArray[0]));
+        //random string should generate correct urinal number
+    }
+
+    @Test
+    void readFileToString(){
+        assertNotEquals("",urinals.getInputString());
     }
 
 }
