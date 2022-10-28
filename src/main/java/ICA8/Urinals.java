@@ -58,6 +58,9 @@ public class Urinals {
             e.printStackTrace();
             return -1;
         }
+        if(inputString.equals("")){
+            return 1;
+        }
         return 0;
     }
 

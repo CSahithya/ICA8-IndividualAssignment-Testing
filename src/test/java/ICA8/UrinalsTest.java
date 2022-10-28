@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -82,6 +83,18 @@ public class UrinalsTest {
     void checkIfNoFileExists(){
         assertEquals(-1,urinals.openFile(new File(" ")));
 
+    }
+
+    @Test
+    void checkIfInputFileEmpty(){
+        File f = new File("src\\main\\resources\\test.dat");
+        try {
+            f.createNewFile();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        assertEquals(1,urinals.openFile(f));
+        f.delete();
     }
 
     @Test
