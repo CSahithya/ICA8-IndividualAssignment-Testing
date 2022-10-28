@@ -130,7 +130,7 @@ public class UrinalsTest {
             e.printStackTrace();
         }
         File secondFile = urinals.writeToOutputFile();
-        assertEquals("rest1.txt", secondFile.getName());
+        assertEquals("rule1.txt", secondFile.getName());
         f.delete();
         secondFile.delete();
     }

@@ -12,7 +12,7 @@ public class Urinals {
     private File datFile = new File("src\\main\\resources\\urinals.dat");
     private String urinalArray[];
     private String inputString;
-    private File outputFile = new File("src\\main\\resources\\rest.txt");
+    private File outputFile = new File("src\\main\\resources\\rule.txt");
     private String outputString;
     private int count;
     private int errorType;
@@ -37,7 +37,7 @@ public class Urinals {
             System.out.println("Working on the Urinals.dat file");
             u.openFile(u.datFile);
             System.out.println("Written to "+u.writeToOutputFile().getName());
-            System.out.println("The output has been written to the latest rest.txt");
+            System.out.println("The output has been written to the latest rule.txt");
         }
             sc.close();
     }
@@ -52,7 +52,7 @@ public class Urinals {
         }
         else{
             for(int i=1;i<10;i++){
-                String filepath = "src\\main\\resources\\rest"+i+".txt";
+                String filepath = "src\\main\\resources\\rule"+i+".txt";
                 outputFile = new File(filepath);
                 if(!outputFile.exists()){
                     try {
@@ -64,7 +64,7 @@ public class Urinals {
                 }
             }
             if(!outputFile.exists()){
-                System.out.println("Too many rest files to create new!");
+                System.out.println("Too many rule files to create new!");
             }
         }
         outputString="";
